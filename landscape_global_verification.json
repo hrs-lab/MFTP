@@ -1,0 +1,1527 @@
+{
+  "description": "Floating-point checks of formulas and feasible constructions; no global optimization or interval certification.",
+  "software": {
+    "python": "3.13.3",
+    "numpy": "2.4.1"
+  },
+  "numpy_version": "2.4.1",
+  "gauss_points_per_half": 1600,
+  "hermite_grid_points": 100001,
+  "hermite": [
+    {
+      "n": 1,
+      "weighted_gap_from_coefficients": 0.6506451422842866,
+      "weighted_gap_exact_formula": 0.6506451422842865,
+      "relative_gap_discrepancy": 2.220446049250313e-16,
+      "minimum_upper_minus_sqrt_on_grid": 0.0,
+      "minimum_sqrt_minus_lower_on_grid": 0.0
+    },
+    {
+      "n": 2,
+      "weighted_gap_from_coefficients": 0.15622540801702206,
+      "weighted_gap_exact_formula": 0.15622540801702187,
+      "relative_gap_discrepancy": 1.3322676295501878e-15,
+      "minimum_upper_minus_sqrt_on_grid": 3.3317792969000948e-12,
+      "minimum_sqrt_minus_lower_on_grid": 0.0
+    },
+    {
+      "n": 4,
+      "weighted_gap_from_coefficients": 0.0386774836535772,
+      "weighted_gap_exact_formula": 0.03867748365357704,
+      "relative_gap_discrepancy": 4.218847493575595e-15,
+      "minimum_upper_minus_sqrt_on_grid": 2.5202062658991053e-14,
+      "minimum_sqrt_minus_lower_on_grid": -2.220446049250313e-16
+    },
+    {
+      "n": 8,
+      "weighted_gap_from_coefficients": 0.009646034395610351,
+      "weighted_gap_exact_formula": 0.009646034395610485,
+      "relative_gap_discrepancy": 1.3877787807814457e-14,
+      "minimum_upper_minus_sqrt_on_grid": 1.318500864044836e-12,
+      "minimum_sqrt_minus_lower_on_grid": 0.0
+    },
+    {
+      "n": 16,
+      "weighted_gap_from_coefficients": 0.0024100553397858357,
+      "weighted_gap_exact_formula": 0.002410055339786005,
+      "relative_gap_discrepancy": 7.016609515630989e-14,
+      "minimum_upper_minus_sqrt_on_grid": 5.218048215738236e-15,
+      "minimum_sqrt_minus_lower_on_grid": 0.0
+    }
+  ],
+  "bands_and_kernels": {
+    "kernel_definitions": {
+      "band": "u_m(x)=-(1/m) sum_{n=m+1}^{2m} ell_n(1/2) ell_n(x)",
+      "U": "U_m=u_m/10, using the manuscript's analytic uniform bound ||u_m||_infinity <= 10",
+      "V": "V=(G_0-T(0))/||G_0-T(0)||_infinity",
+      "fixed_pairs": "1 +/- (1/2) U_m(y)V(z), and 1 +/- (1/2) U_m(y)U_m(z)",
+      "adaptive_pairs": "replace 1/2 by min(1/2,epsilon/(||left||_2 ||right||_2))",
+      "width_bound_status": "Analytical resolvent-norm inequalities evaluated with non-validated floating-point pairings; not rigorous numerical enclosures."
+    },
+    "baseline": {
+      "D": 0.3,
+      "nu": 0.7,
+      "a": 0.5,
+      "J_T": 1.5239630209301815,
+      "J_G": 2.9092610666208323,
+      "G_integral_minus_T_zero": -1.1657341758564144e-15,
+      "V_sup_normalizer": 1.1254720247900911,
+      "V_norm": 0.4193679581353915
+    },
+    "band_table": [
+      {
+        "m": 8,
+        "B_T": 0.7725054914854875,
+        "B_G": 0.7725054926386429,
+        "B_2": 0.9992565121875112,
+        "u_norm_squared_coefficient_formula": 0.07951830666570459,
+        "quadrature_norm_relative_discrepancy": 2.028377465990161e-13,
+        "largest_orthonormal_moment_residual": 7.057892793433084e-14,
+        "sampled_sup_abs_u": 0.6361464533256367
+      },
+      {
+        "m": 32,
+        "B_T": 0.933613009731308,
+        "B_G": 0.9336130097358863,
+        "B_2": 0.9999430834465697,
+        "u_norm_squared_coefficient_formula": 0.019893235567634143,
+        "quadrature_norm_relative_discrepancy": 1.1702860902573775e-12,
+        "largest_orthonormal_moment_residual": 6.695644001851668e-14,
+        "sampled_sup_abs_u": 0.6365835381642926
+      },
+      {
+        "m": 128,
+        "B_T": 0.982677787677754,
+        "B_G": 0.9826777877191023,
+        "B_2": 0.9999962516732952,
+        "u_norm_squared_coefficient_formula": 0.004973573328974123,
+        "quadrature_norm_relative_discrepancy": 4.8724357881724245e-12,
+        "largest_orthonormal_moment_residual": 6.662580917242845e-14,
+        "sampled_sup_abs_u": 0.6366173861086878
+      },
+      {
+        "m": 512,
+        "B_T": 0.995621636074512,
+        "B_G": 0.9956216360046082,
+        "B_2": 0.9999997626264764,
+        "u_norm_squared_coefficient_formula": 0.0012433976977556695,
+        "quadrature_norm_relative_discrepancy": 1.8605117446668373e-11,
+        "largest_orthonormal_moment_residual": 4.869188583991915e-14,
+        "sampled_sup_abs_u": 0.6366196212509028
+      }
+    ],
+    "positive_pairs": [
+      {
+        "m": 8,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.005912876539078376,
+          "quadrature_rank_one_width": 2.028193567661434e-05,
+          "denominator_from_quadrature": 0.9999999997340675,
+          "lower_width_from_resolvent_norm": 2.0281935671220714e-05,
+          "upper_width_from_resolvent_norm": 2.0284772464921822e-05,
+          "denominator_perturbation_absolute_bound": 0.011825753078156752,
+          "asymptotic_leading_term": 2.625474627011339e-05,
+          "width_to_leading_lower": 0.7725054914854875,
+          "width_to_leading_upper": 0.7726135402806243,
+          "analytical_kernel_lower_bound": 0.5
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.00039759153332852293,
+          "quadrature_rank_one_width": 2.8633777065535722e-08,
+          "denominator_from_quadrature": 0.9999999999996505,
+          "lower_width_from_resolvent_norm": 2.8633777065525713e-08,
+          "upper_width_from_resolvent_norm": 2.8633795171135676e-08,
+          "denominator_perturbation_absolute_bound": 0.0007951830666570459,
+          "asymptotic_leading_term": 4.798168419378873e-08,
+          "width_to_leading_lower": 0.5967647352660534,
+          "width_to_leading_upper": 0.5967651126102478,
+          "analytical_kernel_lower_bound": 0.5
+        }
+      },
+      {
+        "m": 32,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.002957453753040801,
+          "quadrature_rank_one_width": 1.531985792812962e-06,
+          "denominator_from_quadrature": 0.9999999999985725,
+          "lower_width_from_resolvent_norm": 1.5319857928107749e-06,
+          "upper_width_from_resolvent_norm": 1.5320393929413755e-06,
+          "denominator_perturbation_absolute_bound": 0.005914907506081602,
+          "asymptotic_leading_term": 1.6409216418820869e-06,
+          "width_to_leading_lower": 0.9336130097313081,
+          "width_to_leading_upper": 0.933645674380998,
+          "analytical_kernel_lower_bound": 0.5
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 9.94661778381707e-05,
+          "quadrature_rank_one_width": 1.6336887276395997e-10,
+          "denominator_from_quadrature": 0.9999999999999999,
+          "lower_width_from_resolvent_norm": 1.6336887276395994e-10,
+          "upper_width_from_resolvent_norm": 1.6336887922913338e-10,
+          "denominator_perturbation_absolute_bound": 0.0001989323556763414,
+          "asymptotic_leading_term": 1.8742845388198722e-10,
+          "width_to_leading_lower": 0.871633251943826,
+          "width_to_leading_upper": 0.8716332864379133,
+          "analytical_kernel_lower_bound": 0.5
+        }
+      },
+      {
+        "m": 128,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0014787661888783072,
+          "quadrature_rank_one_width": 1.0078107804982792e-07,
+          "denominator_from_quadrature": 0.9999999999999939,
+          "lower_width_from_resolvent_norm": 1.0078107804982731e-07,
+          "upper_width_from_resolvent_norm": 1.0078195958940263e-07,
+          "denominator_perturbation_absolute_bound": 0.0029575323777566143,
+          "asymptotic_leading_term": 1.0255760261763043e-07,
+          "width_to_leading_lower": 0.982677787677754,
+          "width_to_leading_upper": 0.9826863832333522,
+          "analytical_kernel_lower_bound": 0.5
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 2.4867866644870618e-05,
+          "quadrature_rank_one_width": 7.069974318154137e-13,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 7.069974318154137e-13,
+          "upper_width_from_resolvent_norm": 7.069974335642731e-13,
+          "denominator_perturbation_absolute_bound": 4.9735733289741236e-05,
+          "asymptotic_leading_term": 7.321423979765126e-13,
+          "width_to_leading_lower": 0.9656556344358772,
+          "width_to_leading_upper": 0.9656556368245646,
+          "analytical_kernel_lower_bound": 0.5
+        }
+      },
+      {
+        "m": 512,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0007393843924125932,
+          "quadrature_rank_one_width": 6.381785506877806e-09,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 6.381785506877806e-09,
+          "upper_width_from_resolvent_norm": 6.381799462323211e-09,
+          "denominator_perturbation_absolute_bound": 0.0014787687848251865,
+          "asymptotic_leading_term": 6.409850163601902e-09,
+          "width_to_leading_lower": 0.9956216360745123,
+          "width_to_leading_upper": 0.9956238132619737,
+          "analytical_kernel_lower_bound": 0.5
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 6.216988488778346e-06,
+          "quadrature_rank_one_width": 2.8349424274211776e-15,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 2.8349424274211776e-15,
+          "upper_width_from_resolvent_norm": 2.8349424278594703e-15,
+          "denominator_perturbation_absolute_bound": 1.2433976977556692e-05,
+          "asymptotic_leading_term": 2.8599312420957523e-15,
+          "width_to_leading_lower": 0.9912624421500907,
+          "width_to_leading_upper": 0.9912624423033436,
+          "analytical_kernel_lower_bound": 0.5
+        }
+      }
+    ],
+    "budget_adaptive_cases": [
+      {
+        "m": 8,
+        "radius": 1e-05,
+        "unrestricted": {
+          "amplitude": 0.0008456121089210729,
+          "quadratic_radius_used": 1e-05,
+          "quadrature_rank_one_width": 3.4301300791885e-08,
+          "denominator_from_quadrature": 0.9999999999999992,
+          "lower_width_from_resolvent_norm": 3.4301300791884975e-08,
+          "upper_width_from_resolvent_norm": 3.43013008056055e-08,
+          "denominator_perturbation_absolute_bound": 2e-05,
+          "analytical_kernel_lower_bound": 0.9991543878910789,
+          "budget_active": true
+        },
+        "reversible": {
+          "amplitude": 0.012575720509291097,
+          "quadratic_radius_used": 1.0000000000000003e-05,
+          "quadrature_rank_one_width": 7.201807550028018e-10,
+          "denominator_from_quadrature": 0.9999999999999998,
+          "lower_width_from_resolvent_norm": 7.201807550028016e-10,
+          "upper_width_from_resolvent_norm": 7.20180755290874e-10,
+          "denominator_perturbation_absolute_bound": 2.0000000000000005e-05,
+          "analytical_kernel_lower_bound": 0.9874242794907089,
+          "budget_active": true
+        }
+      },
+      {
+        "m": 8,
+        "radius": 0.001,
+        "unrestricted": {
+          "amplitude": 0.08456121089210729,
+          "quadratic_radius_used": 0.001,
+          "quadrature_rank_one_width": 3.4301300792145877e-06,
+          "denominator_from_quadrature": 0.9999999999923936,
+          "lower_width_from_resolvent_norm": 3.430130079188497e-06,
+          "upper_width_from_resolvent_norm": 3.430143799763696e-06,
+          "denominator_perturbation_absolute_bound": 0.002,
+          "analytical_kernel_lower_bound": 0.9154387891078927,
+          "budget_active": true
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.00039759153332852293,
+          "quadrature_rank_one_width": 2.8633777065535722e-08,
+          "denominator_from_quadrature": 0.9999999999996505,
+          "lower_width_from_resolvent_norm": 2.8633777065525713e-08,
+          "upper_width_from_resolvent_norm": 2.8633795171135676e-08,
+          "denominator_perturbation_absolute_bound": 0.0007951830666570459,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 8,
+        "radius": 0.01,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.005912876539078376,
+          "quadrature_rank_one_width": 2.028193567661434e-05,
+          "denominator_from_quadrature": 0.9999999997340675,
+          "lower_width_from_resolvent_norm": 2.0281935671220714e-05,
+          "upper_width_from_resolvent_norm": 2.0284772464921822e-05,
+          "denominator_perturbation_absolute_bound": 0.011825753078156752,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.00039759153332852293,
+          "quadrature_rank_one_width": 2.8633777065535722e-08,
+          "denominator_from_quadrature": 0.9999999999996505,
+          "lower_width_from_resolvent_norm": 2.8633777065525713e-08,
+          "upper_width_from_resolvent_norm": 2.8633795171135676e-08,
+          "denominator_perturbation_absolute_bound": 0.0007951830666570459,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 8,
+        "radius": 0.1,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.005912876539078376,
+          "quadrature_rank_one_width": 2.028193567661434e-05,
+          "denominator_from_quadrature": 0.9999999997340675,
+          "lower_width_from_resolvent_norm": 2.0281935671220714e-05,
+          "upper_width_from_resolvent_norm": 2.0284772464921822e-05,
+          "denominator_perturbation_absolute_bound": 0.011825753078156752,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.00039759153332852293,
+          "quadrature_rank_one_width": 2.8633777065535722e-08,
+          "denominator_from_quadrature": 0.9999999999996505,
+          "lower_width_from_resolvent_norm": 2.8633777065525713e-08,
+          "upper_width_from_resolvent_norm": 2.8633795171135676e-08,
+          "denominator_perturbation_absolute_bound": 0.0007951830666570459,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 8,
+        "radius": 1.0,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.005912876539078376,
+          "quadrature_rank_one_width": 2.028193567661434e-05,
+          "denominator_from_quadrature": 0.9999999997340675,
+          "lower_width_from_resolvent_norm": 2.0281935671220714e-05,
+          "upper_width_from_resolvent_norm": 2.0284772464921822e-05,
+          "denominator_perturbation_absolute_bound": 0.011825753078156752,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.00039759153332852293,
+          "quadrature_rank_one_width": 2.8633777065535722e-08,
+          "denominator_from_quadrature": 0.9999999999996505,
+          "lower_width_from_resolvent_norm": 2.8633777065525713e-08,
+          "upper_width_from_resolvent_norm": 2.8633795171135676e-08,
+          "denominator_perturbation_absolute_bound": 0.0007951830666570459,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 32,
+        "radius": 1e-05,
+        "unrestricted": {
+          "amplitude": 0.001690643512129003,
+          "quadratic_radius_used": 1e-05,
+          "quadrature_rank_one_width": 5.180083682578687e-09,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 5.180083682578687e-09,
+          "upper_width_from_resolvent_norm": 5.180083684650721e-09,
+          "denominator_perturbation_absolute_bound": 2e-05,
+          "analytical_kernel_lower_bound": 0.998309356487871,
+          "budget_active": true
+        },
+        "reversible": {
+          "amplitude": 0.05026834355829869,
+          "quadratic_radius_used": 1e-05,
+          "quadrature_rank_one_width": 1.6424565245661448e-11,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 1.6424565245661448e-11,
+          "upper_width_from_resolvent_norm": 1.6424565252231275e-11,
+          "denominator_perturbation_absolute_bound": 2e-05,
+          "analytical_kernel_lower_bound": 0.9497316564417013,
+          "budget_active": true
+        }
+      },
+      {
+        "m": 32,
+        "radius": 0.001,
+        "unrestricted": {
+          "amplitude": 0.16906435121290028,
+          "quadratic_radius_used": 0.001,
+          "quadrature_rank_one_width": 5.180083682579531e-07,
+          "denominator_from_quadrature": 0.9999999999998368,
+          "lower_width_from_resolvent_norm": 5.180083682578686e-07,
+          "upper_width_from_resolvent_norm": 5.180104402996298e-07,
+          "denominator_perturbation_absolute_bound": 0.002,
+          "analytical_kernel_lower_bound": 0.8309356487870997,
+          "budget_active": true
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 9.94661778381707e-05,
+          "quadrature_rank_one_width": 1.6336887276395997e-10,
+          "denominator_from_quadrature": 0.9999999999999999,
+          "lower_width_from_resolvent_norm": 1.6336887276395994e-10,
+          "upper_width_from_resolvent_norm": 1.6336887922913338e-10,
+          "denominator_perturbation_absolute_bound": 0.0001989323556763414,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 32,
+        "radius": 0.01,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.002957453753040801,
+          "quadrature_rank_one_width": 1.531985792812962e-06,
+          "denominator_from_quadrature": 0.9999999999985725,
+          "lower_width_from_resolvent_norm": 1.5319857928107749e-06,
+          "upper_width_from_resolvent_norm": 1.5320393929413755e-06,
+          "denominator_perturbation_absolute_bound": 0.005914907506081602,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 9.94661778381707e-05,
+          "quadrature_rank_one_width": 1.6336887276395997e-10,
+          "denominator_from_quadrature": 0.9999999999999999,
+          "lower_width_from_resolvent_norm": 1.6336887276395994e-10,
+          "upper_width_from_resolvent_norm": 1.6336887922913338e-10,
+          "denominator_perturbation_absolute_bound": 0.0001989323556763414,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 32,
+        "radius": 0.1,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.002957453753040801,
+          "quadrature_rank_one_width": 1.531985792812962e-06,
+          "denominator_from_quadrature": 0.9999999999985725,
+          "lower_width_from_resolvent_norm": 1.5319857928107749e-06,
+          "upper_width_from_resolvent_norm": 1.5320393929413755e-06,
+          "denominator_perturbation_absolute_bound": 0.005914907506081602,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 9.94661778381707e-05,
+          "quadrature_rank_one_width": 1.6336887276395997e-10,
+          "denominator_from_quadrature": 0.9999999999999999,
+          "lower_width_from_resolvent_norm": 1.6336887276395994e-10,
+          "upper_width_from_resolvent_norm": 1.6336887922913338e-10,
+          "denominator_perturbation_absolute_bound": 0.0001989323556763414,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 32,
+        "radius": 1.0,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.002957453753040801,
+          "quadrature_rank_one_width": 1.531985792812962e-06,
+          "denominator_from_quadrature": 0.9999999999985725,
+          "lower_width_from_resolvent_norm": 1.5319857928107749e-06,
+          "upper_width_from_resolvent_norm": 1.5320393929413755e-06,
+          "denominator_perturbation_absolute_bound": 0.005914907506081602,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 9.94661778381707e-05,
+          "quadrature_rank_one_width": 1.6336887276395997e-10,
+          "denominator_from_quadrature": 0.9999999999999999,
+          "lower_width_from_resolvent_norm": 1.6336887276395994e-10,
+          "upper_width_from_resolvent_norm": 1.6336887922913338e-10,
+          "denominator_perturbation_absolute_bound": 0.0001989323556763414,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 128,
+        "radius": 1e-05,
+        "unrestricted": {
+          "amplitude": 0.003381197134208664,
+          "quadratic_radius_used": 1e-05,
+          "quadrature_rank_one_width": 6.815213845690716e-10,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 6.815213845690716e-10,
+          "upper_width_from_resolvent_norm": 6.815213848416801e-10,
+          "denominator_perturbation_absolute_bound": 2e-05,
+          "analytical_kernel_lower_bound": 0.9966188028657913,
+          "budget_active": true
+        },
+        "reversible": {
+          "amplitude": 0.20106268347837258,
+          "quadratic_radius_used": 1e-05,
+          "quadrature_rank_one_width": 2.8430160170624967e-13,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 2.8430160170624967e-13,
+          "upper_width_from_resolvent_norm": 2.8430160181997034e-13,
+          "denominator_perturbation_absolute_bound": 2e-05,
+          "analytical_kernel_lower_bound": 0.7989373165216274,
+          "budget_active": true
+        }
+      },
+      {
+        "m": 128,
+        "radius": 0.001,
+        "unrestricted": {
+          "amplitude": 0.3381197134208664,
+          "quadratic_radius_used": 0.001,
+          "quadrature_rank_one_width": 6.815213845690734e-08,
+          "denominator_from_quadrature": 0.9999999999999972,
+          "lower_width_from_resolvent_norm": 6.815213845690716e-08,
+          "upper_width_from_resolvent_norm": 6.815241106655143e-08,
+          "denominator_perturbation_absolute_bound": 0.002,
+          "analytical_kernel_lower_bound": 0.6618802865791336,
+          "budget_active": true
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 2.4867866644870618e-05,
+          "quadrature_rank_one_width": 7.069974318154137e-13,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 7.069974318154137e-13,
+          "upper_width_from_resolvent_norm": 7.069974335642731e-13,
+          "denominator_perturbation_absolute_bound": 4.9735733289741236e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 128,
+        "radius": 0.01,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0014787661888783072,
+          "quadrature_rank_one_width": 1.0078107804982792e-07,
+          "denominator_from_quadrature": 0.9999999999999939,
+          "lower_width_from_resolvent_norm": 1.0078107804982731e-07,
+          "upper_width_from_resolvent_norm": 1.0078195958940263e-07,
+          "denominator_perturbation_absolute_bound": 0.0029575323777566143,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 2.4867866644870618e-05,
+          "quadrature_rank_one_width": 7.069974318154137e-13,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 7.069974318154137e-13,
+          "upper_width_from_resolvent_norm": 7.069974335642731e-13,
+          "denominator_perturbation_absolute_bound": 4.9735733289741236e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 128,
+        "radius": 0.1,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0014787661888783072,
+          "quadrature_rank_one_width": 1.0078107804982792e-07,
+          "denominator_from_quadrature": 0.9999999999999939,
+          "lower_width_from_resolvent_norm": 1.0078107804982731e-07,
+          "upper_width_from_resolvent_norm": 1.0078195958940263e-07,
+          "denominator_perturbation_absolute_bound": 0.0029575323777566143,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 2.4867866644870618e-05,
+          "quadrature_rank_one_width": 7.069974318154137e-13,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 7.069974318154137e-13,
+          "upper_width_from_resolvent_norm": 7.069974335642731e-13,
+          "denominator_perturbation_absolute_bound": 4.9735733289741236e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 128,
+        "radius": 1.0,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0014787661888783072,
+          "quadrature_rank_one_width": 1.0078107804982792e-07,
+          "denominator_from_quadrature": 0.9999999999999939,
+          "lower_width_from_resolvent_norm": 1.0078107804982731e-07,
+          "upper_width_from_resolvent_norm": 1.0078195958940263e-07,
+          "denominator_perturbation_absolute_bound": 0.0029575323777566143,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 2.4867866644870618e-05,
+          "quadrature_rank_one_width": 7.069974318154137e-13,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 7.069974318154137e-13,
+          "upper_width_from_resolvent_norm": 7.069974335642731e-13,
+          "denominator_perturbation_absolute_bound": 4.9735733289741236e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 512,
+        "radius": 1e-05,
+        "unrestricted": {
+          "amplitude": 0.0067623823971792564,
+          "quadratic_radius_used": 1e-05,
+          "quadrature_rank_one_width": 8.631214794856834e-11,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 8.631214794856834e-11,
+          "upper_width_from_resolvent_norm": 8.63121479830932e-11,
+          "denominator_perturbation_absolute_bound": 2e-05,
+          "analytical_kernel_lower_bound": 0.9932376176028207,
+          "budget_active": true
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 6.216988488778346e-06,
+          "quadrature_rank_one_width": 2.8349424274211776e-15,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 2.8349424274211776e-15,
+          "upper_width_from_resolvent_norm": 2.8349424278594703e-15,
+          "denominator_perturbation_absolute_bound": 1.2433976977556692e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 512,
+        "radius": 0.001,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0007393843924125932,
+          "quadrature_rank_one_width": 6.381785506877806e-09,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 6.381785506877806e-09,
+          "upper_width_from_resolvent_norm": 6.381799462323211e-09,
+          "denominator_perturbation_absolute_bound": 0.0014787687848251865,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 6.216988488778346e-06,
+          "quadrature_rank_one_width": 2.8349424274211776e-15,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 2.8349424274211776e-15,
+          "upper_width_from_resolvent_norm": 2.8349424278594703e-15,
+          "denominator_perturbation_absolute_bound": 1.2433976977556692e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 512,
+        "radius": 0.01,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0007393843924125932,
+          "quadrature_rank_one_width": 6.381785506877806e-09,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 6.381785506877806e-09,
+          "upper_width_from_resolvent_norm": 6.381799462323211e-09,
+          "denominator_perturbation_absolute_bound": 0.0014787687848251865,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 6.216988488778346e-06,
+          "quadrature_rank_one_width": 2.8349424274211776e-15,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 2.8349424274211776e-15,
+          "upper_width_from_resolvent_norm": 2.8349424278594703e-15,
+          "denominator_perturbation_absolute_bound": 1.2433976977556692e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 512,
+        "radius": 0.1,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0007393843924125932,
+          "quadrature_rank_one_width": 6.381785506877806e-09,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 6.381785506877806e-09,
+          "upper_width_from_resolvent_norm": 6.381799462323211e-09,
+          "denominator_perturbation_absolute_bound": 0.0014787687848251865,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 6.216988488778346e-06,
+          "quadrature_rank_one_width": 2.8349424274211776e-15,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 2.8349424274211776e-15,
+          "upper_width_from_resolvent_norm": 2.8349424278594703e-15,
+          "denominator_perturbation_absolute_bound": 1.2433976977556692e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      },
+      {
+        "m": 512,
+        "radius": 1.0,
+        "unrestricted": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 0.0007393843924125932,
+          "quadrature_rank_one_width": 6.381785506877806e-09,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 6.381785506877806e-09,
+          "upper_width_from_resolvent_norm": 6.381799462323211e-09,
+          "denominator_perturbation_absolute_bound": 0.0014787687848251865,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        },
+        "reversible": {
+          "amplitude": 0.5,
+          "quadratic_radius_used": 6.216988488778346e-06,
+          "quadrature_rank_one_width": 2.8349424274211776e-15,
+          "denominator_from_quadrature": 1.0,
+          "lower_width_from_resolvent_norm": 2.8349424274211776e-15,
+          "upper_width_from_resolvent_norm": 2.8349424278594703e-15,
+          "denominator_perturbation_absolute_bound": 1.2433976977556692e-05,
+          "analytical_kernel_lower_bound": 0.5,
+          "budget_active": false
+        }
+      }
+    ],
+    "largest_band_moment_residual": 7.057892793433084e-14
+  },
+  "two_cell_matrix": [
+    {
+      "t": -1,
+      "matrix_objective": 0.334822296863251,
+      "scalar_objective": 0.334822296863251,
+      "absolute_discrepancy": 0.0
+    },
+    {
+      "t": -0.75,
+      "matrix_objective": 0.34155687898886206,
+      "scalar_objective": 0.34155687898886206,
+      "absolute_discrepancy": 0.0
+    },
+    {
+      "t": -0.25,
+      "matrix_objective": 0.35587286111992766,
+      "scalar_objective": 0.35587286111992766,
+      "absolute_discrepancy": 0.0
+    },
+    {
+      "t": 0,
+      "matrix_objective": 0.3634905143250008,
+      "scalar_objective": 0.3634905143250008,
+      "absolute_discrepancy": 0.0
+    },
+    {
+      "t": 0.25,
+      "matrix_objective": 0.37144142106962735,
+      "scalar_objective": 0.37144142106962735,
+      "absolute_discrepancy": 0.0
+    },
+    {
+      "t": 0.75,
+      "matrix_objective": 0.3884344711481552,
+      "scalar_objective": 0.3884344711481552,
+      "absolute_discrepancy": 0.0
+    },
+    {
+      "t": 1,
+      "matrix_objective": 0.3975277060891074,
+      "scalar_objective": 0.3975277060891074,
+      "absolute_discrepancy": 0.0
+    }
+  ],
+  "four_cell_repair": {
+    "seed": 20260926,
+    "examples_per_class": 8,
+    "quadrature_points_per_cell": 24,
+    "Lambda_2": 3.4245008972987527,
+    "examples": [
+      {
+        "reversible": false,
+        "example_index": 0,
+        "original_four_cell_kernel": [
+          [
+            1.3884253046866748,
+            1.166188073986226,
+            0.7426273446092071,
+            0.7027592767178923
+          ],
+          [
+            1.5148471426834125,
+            0.8477116052086058,
+            0.4389646298922476,
+            1.1984766222157341
+          ],
+          [
+            0.31273809701709954,
+            1.540119215217604,
+            1.0184080254985455,
+            1.1287346622667511
+          ],
+          [
+            0.7839894556128132,
+            0.44598110558756443,
+            1.8,
+            0.9700294387996224
+          ]
+        ],
+        "original_quadratic_radius": 0.41465070390432457,
+        "repaired_quadratic_radius": 0.12012784911361991,
+        "beta": 1.2121308909046333,
+        "eta": [
+          0.40611843039455964,
+          0.22750343043682328
+        ],
+        "largest_moment_residual": 7.288984848003728e-17,
+        "destination_marginal_residual": 4.911435841359335e-17,
+        "source_marginal_residual": 4.399150314859934e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.7261633285680011,
+        "analytical_kernel_lower_bound": 0.1413741376258291,
+        "repair_L2_displacement": 0.3500295863199543,
+        "repair_L2_displacement_bound": 0.775153868648878
+      },
+      {
+        "reversible": false,
+        "example_index": 1,
+        "original_four_cell_kernel": [
+          [
+            0.8416158689380056,
+            1.0505299741119198,
+            1.5120265458523394,
+            0.5958276110977347
+          ],
+          [
+            0.5277886963466961,
+            1.344180843116726,
+            1.1470255141464885,
+            0.9810049463900894
+          ],
+          [
+            1.2484892584360978,
+            1.0913416694364413,
+            0.19999999999999996,
+            1.4601690721274607
+          ],
+          [
+            1.3821061762792004,
+            0.513947513334913,
+            1.1409479400011717,
+            0.9629983703847149
+          ]
+        ],
+        "original_quadratic_radius": 0.3658824927493478,
+        "repaired_quadratic_radius": 0.10906465725441426,
+        "beta": 1.0513207337588515,
+        "eta": [
+          0.2535475006576683,
+          0.27376787586401735
+        ],
+        "largest_moment_residual": 8.05980992262228e-17,
+        "destination_marginal_residual": 3.08252230164785e-17,
+        "source_marginal_residual": 6.456423937151179e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.7417803379137715,
+        "analytical_kernel_lower_bound": 0.0974981614081962,
+        "repair_L2_displacement": 0.3113900602931264,
+        "repair_L2_displacement_bound": 0.7000273340358213
+      },
+      {
+        "reversible": false,
+        "example_index": 2,
+        "original_four_cell_kernel": [
+          [
+            0.19999999999999996,
+            1.5187591593192458,
+            0.9554282127797371,
+            1.3258126279010172
+          ],
+          [
+            1.0955891429544555,
+            0.9177606543455363,
+            1.5663955288698934,
+            0.42025467383011483
+          ],
+          [
+            1.4764116677723473,
+            1.1283569159193079,
+            0.35561034875283615,
+            1.0396210675555086
+          ],
+          [
+            1.2279991892731972,
+            0.43512327041591004,
+            1.1225659095975336,
+            1.2143116307133592
+          ]
+        ],
+        "original_quadratic_radius": 0.41700819570254166,
+        "repaired_quadratic_radius": 0.13129902200519256,
+        "beta": 1.1859045274259055,
+        "eta": [
+          0.3750777774708514,
+          0.23981863049439783
+        ],
+        "largest_moment_residual": 1.0749024476090733e-16,
+        "destination_marginal_residual": 2.4245471082207093e-17,
+        "source_marginal_residual": 5.748982019604387e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.7220052276481854,
+        "analytical_kernel_lower_bound": 0.09149530434227954,
+        "repair_L2_displacement": 0.3402466140726029,
+        "repair_L2_displacement_bound": 0.7687602150959993
+      },
+      {
+        "reversible": false,
+        "example_index": 3,
+        "original_four_cell_kernel": [
+          [
+            0.9354850950280201,
+            0.7100571282450673,
+            0.8783135696853582,
+            1.4761442070415545
+          ],
+          [
+            0.6186247617221063,
+            1.8,
+            0.6236341301026299,
+            0.9577411081752638
+          ],
+          [
+            0.9574220095213083,
+            1.1867352860193965,
+            1.5433431675551588,
+            0.3124995369041368
+          ],
+          [
+            1.4884681337285652,
+            0.30320758573553686,
+            0.9547091326568531,
+            1.2536151478790447
+          ]
+        ],
+        "original_quadratic_radius": 0.42232159090758303,
+        "repaired_quadratic_radius": 0.11715203298401396,
+        "beta": 1.299641773874591,
+        "eta": [
+          0.21626238768201467,
+          0.4137013453757001
+        ],
+        "largest_moment_residual": 1.6528976454113767e-16,
+        "destination_marginal_residual": 3.642919299551295e-17,
+        "source_marginal_residual": 5.082197683525802e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.722382765198419,
+        "analytical_kernel_lower_bound": 0.13184992079208596,
+        "repair_L2_displacement": 0.35910556020507656,
+        "repair_L2_displacement_bound": 0.8038245679946795
+      },
+      {
+        "reversible": false,
+        "example_index": 4,
+        "original_four_cell_kernel": [
+          [
+            1.372518925956932,
+            0.9401652495689037,
+            0.8407284812283762,
+            0.8465873432457882
+          ],
+          [
+            0.4684394129073983,
+            0.6416374911408333,
+            1.5553500954528818,
+            1.3345730004988865
+          ],
+          [
+            1.8000000000000003,
+            1.6853448210841298,
+            0.28289405383777244,
+            0.23176112507809765
+          ],
+          [
+            0.3590416611356695,
+            0.7328524382061332,
+            1.3210273694809695,
+            1.5870785311772275
+          ]
+        ],
+        "original_quadratic_radius": 0.510308190618328,
+        "repaired_quadratic_radius": 0.277887670750104,
+        "beta": 0.7269751086536747,
+        "eta": [
+          0.184990734672404,
+          0.18181994526220327
+        ],
+        "largest_moment_residual": 6.735596958762915e-17,
+        "destination_marginal_residual": 2.814859890315491e-17,
+        "source_marginal_residual": 4.618701254788249e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.5244239835019531,
+        "analytical_kernel_lower_bound": 0.13420061697286148,
+        "repair_L2_displacement": 0.26630169257713726,
+        "repair_L2_displacement_bound": 0.6357685501508156
+      },
+      {
+        "reversible": false,
+        "example_index": 5,
+        "original_four_cell_kernel": [
+          [
+            1.0593624435306213,
+            1.6328778338271566,
+            0.7200494720064241,
+            0.5877102506357981
+          ],
+          [
+            0.9037496735088562,
+            0.5260963159792427,
+            1.8,
+            0.7701540105119012
+          ],
+          [
+            1.2168598777398534,
+            0.7379926946599384,
+            0.6392864310726794,
+            1.4058609965275286
+          ],
+          [
+            0.8200280052206691,
+            1.1030331555336619,
+            0.8406640969208967,
+            1.2362747423247722
+          ]
+        ],
+        "original_quadratic_radius": 0.3634749208695899,
+        "repaired_quadratic_radius": 0.12205196527352612,
+        "beta": 1.1739291389787456,
+        "eta": [
+          0.2794447970797938,
+          0.30854006204998413
+        ],
+        "largest_moment_residual": 6.582164571564676e-17,
+        "destination_marginal_residual": 2.489091018801487e-17,
+        "source_marginal_residual": 3.4314998759166215e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.7394358653261569,
+        "analytical_kernel_lower_bound": 0.2420025135807273,
+        "repair_L2_displacement": 0.28677872514005476,
+        "repair_L2_displacement_bound": 0.7362811009688575
+      },
+      {
+        "reversible": false,
+        "example_index": 6,
+        "original_four_cell_kernel": [
+          [
+            0.7862892489482766,
+            0.8738892094611406,
+            1.8,
+            0.5398215415905826
+          ],
+          [
+            1.4088303987980706,
+            1.092547781186972,
+            0.7651642279781257,
+            0.7334575920368318
+          ],
+          [
+            0.8172831166045487,
+            0.8735056370883465,
+            1.0577214855060766,
+            1.2514897608010283
+          ],
+          [
+            0.9875972356491042,
+            1.160057372263541,
+            0.3771142865157976,
+            1.4752311055715572
+          ]
+        ],
+        "original_quadratic_radius": 0.3509637687662121,
+        "repaired_quadratic_radius": 0.10165840631721437,
+        "beta": 0.9575001487383287,
+        "eta": [
+          0.4304254383246356,
+          0.09480097332594423
+        ],
+        "largest_moment_residual": 1.018977484227125e-16,
+        "destination_marginal_residual": 2.705592640119686e-17,
+        "source_marginal_residual": 8.927049637702522e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.7008208474430562,
+        "analytical_kernel_lower_bound": 0.19265096187035274,
+        "repair_L2_displacement": 0.30504212147068266,
+        "repair_L2_displacement_bound": 0.6608163020408832
+      },
+      {
+        "reversible": false,
+        "example_index": 7,
+        "original_four_cell_kernel": [
+          [
+            0.5172495545012554,
+            1.0613472393246317,
+            1.181214426523033,
+            1.2401887796510795
+          ],
+          [
+            0.22751723515280453,
+            0.8840428489005413,
+            1.586712618497954,
+            1.3017272974487
+          ],
+          [
+            1.4552332103459398,
+            1.2137128172822873,
+            0.44976855092637624,
+            0.8812854214453969
+          ],
+          [
+            1.8,
+            0.8408970944925398,
+            0.7823044040526367,
+            0.5767985014548234
+          ]
+        ],
+        "original_quadratic_radius": 0.4208882270308061,
+        "repaired_quadratic_radius": 0.11069509961640317,
+        "beta": 1.2491653282866835,
+        "eta": [
+          0.5494895800877996,
+          0.1330109193180622
+        ],
+        "largest_moment_residual": 8.268136051841821e-17,
+        "destination_marginal_residual": 1.734723475976807e-17,
+        "source_marginal_residual": 3.6347877832576536e-17,
+        "symmetry_residual": null,
+        "sampled_kernel_minimum": 0.7231739522512735,
+        "analytical_kernel_lower_bound": 0.10115629664543925,
+        "repair_L2_displacement": 0.36644295192779863,
+        "repair_L2_displacement_bound": 0.789147994705076
+      },
+      {
+        "reversible": true,
+        "example_index": 0,
+        "original_four_cell_kernel": [
+          [
+            1.2963592864489746,
+            1.2651659210077515,
+            0.39207069769736236,
+            1.0464040948459117
+          ],
+          [
+            1.2651659210077515,
+            0.9083175702754733,
+            0.8332907997325372,
+            0.9932257089842381
+          ],
+          [
+            0.39207069769736236,
+            0.8332907997325372,
+            1.8,
+            0.9746385025701004
+          ],
+          [
+            1.0464040948459117,
+            0.9932257089842381,
+            0.9746385025701004,
+            0.9857316935997498
+          ]
+        ],
+        "original_quadratic_radius": 0.32379477217080227,
+        "repaired_quadratic_radius": 0.018327326504656093,
+        "beta": 5.981393666641383,
+        "eta": [
+          0.2938437851054927,
+          0.2655152395738424
+        ],
+        "largest_moment_residual": 1.857701182336429e-17,
+        "destination_marginal_residual": 7.038843791683236e-18,
+        "source_marginal_residual": 1.9736926462209266e-17,
+        "symmetry_residual": 1.1102230246251565e-16,
+        "sampled_kernel_minimum": 0.9534335227150834,
+        "analytical_kernel_lower_bound": 0.056159373961500184,
+        "repair_L2_displacement": 0.31699995618711135,
+        "repair_L2_displacement_bound": 1.1341772208076437
+      },
+      {
+        "reversible": true,
+        "example_index": 1,
+        "original_four_cell_kernel": [
+          [
+            1.6072642497464429,
+            1.4088916228035264,
+            0.7838441274500305,
+            0.19999999999999996
+          ],
+          [
+            1.4088916228035266,
+            0.3827120573202796,
+            0.8872447617462031,
+            1.3211515581299906
+          ],
+          [
+            0.7838441274500305,
+            0.8872447617462031,
+            1.0867233078589529,
+            1.2421878029448135
+          ],
+          [
+            0.19999999999999996,
+            1.3211515581299906,
+            1.2421878029448135,
+            1.2366606389251957
+          ]
+        ],
+        "original_quadratic_radius": 0.4235407965953728,
+        "repaired_quadratic_radius": 0.011281366562407164,
+        "beta": 8.642304132386432,
+        "eta": [
+          0.5246858474877709,
+          0.3060799085770355
+        ],
+        "largest_moment_residual": 2.011140724286815e-17,
+        "destination_marginal_residual": 7.768986192216443e-18,
+        "source_marginal_residual": 9.662951862277058e-18,
+        "symmetry_residual": 5.204170427930421e-17,
+        "sampled_kernel_minimum": 0.9608421136266005,
+        "analytical_kernel_lower_bound": 0.020741930274553656,
+        "repair_L2_displacement": 0.42078466979944174,
+        "repair_L2_displacement_bound": 1.2759058768655538
+      },
+      {
+        "reversible": true,
+        "example_index": 2,
+        "original_four_cell_kernel": [
+          [
+            1.1833358743062337,
+            1.1531069095421191,
+            0.4096768731806112,
+            1.2538803429710361
+          ],
+          [
+            1.1531069095421191,
+            0.8236737768821537,
+            1.4567474447344961,
+            0.5664718688412311
+          ],
+          [
+            0.4096768731806112,
+            1.4567474447344961,
+            1.7539278938971603,
+            0.3796477881877326
+          ],
+          [
+            1.2538803429710361,
+            0.5664718688412311,
+            0.3796477881877326,
+            1.8
+          ]
+        ],
+        "original_quadratic_radius": 0.4814477137127341,
+        "repaired_quadratic_radius": 0.02299653835639985,
+        "beta": 7.6331999286264045,
+        "eta": [
+          0.1571332611993475,
+          0.5075910667243049
+        ],
+        "largest_moment_residual": 6.134701208606413e-17,
+        "destination_marginal_residual": 1.1868625656927256e-17,
+        "source_marginal_residual": 1.4934884925987824e-17,
+        "symmetry_residual": 9.71445146547012e-17,
+        "sampled_kernel_minimum": 0.9159258193620373,
+        "analytical_kernel_lower_bound": 0.04397532679961194,
+        "repair_L2_displacement": 0.47242942913184865,
+        "repair_L2_displacement_bound": 1.3098488018422383
+      },
+      {
+        "reversible": true,
+        "example_index": 3,
+        "original_four_cell_kernel": [
+          [
+            0.3112029267315327,
+            0.7366588204484372,
+            1.15213825282003,
+            1.8000000000000003
+          ],
+          [
+            0.7366588204484372,
+            1.465865865269878,
+            0.9899514296372407,
+            0.8075238846444442
+          ],
+          [
+            1.15213825282003,
+            0.9899514296372407,
+            1.463489653696276,
+            0.39442066384645336
+          ],
+          [
+            1.8000000000000003,
+            0.8075238846444442,
+            0.39442066384645336,
+            0.9980554515091022
+          ]
+        ],
+        "original_quadratic_radius": 0.4457463421615487,
+        "repaired_quadratic_radius": 0.016133364958167157,
+        "beta": 9.023807680735686,
+        "eta": [
+          0.5284780003468729,
+          0.33459491988537
+        ],
+        "largest_moment_residual": 2.218730598860215e-17,
+        "destination_marginal_residual": 6.0816965612858764e-18,
+        "source_marginal_residual": 8.700722434196173e-18,
+        "symmetry_residual": 3.8163916471489756e-17,
+        "sampled_kernel_minimum": 0.9621187909229906,
+        "analytical_kernel_lower_bound": 0.0310463784465478,
+        "repair_L2_displacement": 0.4401499564140724,
+        "repair_L2_displacement_bound": 1.3015150891078748
+      },
+      {
+        "reversible": true,
+        "example_index": 4,
+        "original_four_cell_kernel": [
+          [
+            0.7292530436015219,
+            1.7573044296057159,
+            0.20000000000000007,
+            1.3134425267927616
+          ],
+          [
+            1.7573044296057159,
+            1.516882470326771,
+            0.43221743264318735,
+            0.2935956674243254
+          ],
+          [
+            0.20000000000000007,
+            0.43221743264318735,
+            1.5869436017120975,
+            1.780838965644715
+          ],
+          [
+            1.3134425267927616,
+            0.2935956674243254,
+            1.780838965644715,
+            0.6121228401381975
+          ]
+        ],
+        "original_quadratic_radius": 0.628546067770637,
+        "repaired_quadratic_radius": 0.020992389950832694,
+        "beta": 6.376585119841497,
+        "eta": [
+          0.6383952884312845,
+          0.031207668641742868
+        ],
+        "largest_moment_residual": 3.3734742503288205e-17,
+        "destination_marginal_residual": 1.5280474368467578e-17,
+        "source_marginal_residual": 2.8734745702654885e-17,
+        "symmetry_residual": 1.5005358067199381e-16,
+        "sampled_kernel_minimum": 0.9244483048990964,
+        "analytical_kernel_lower_bound": 0.02711281666933405,
+        "repair_L2_displacement": 0.6237061858394684,
+        "repair_L2_displacement_bound": 1.4077737129054866
+      },
+      {
+        "reversible": true,
+        "example_index": 5,
+        "original_four_cell_kernel": [
+          [
+            0.376484788240807,
+            1.3764068251754014,
+            1.2203833661485308,
+            1.0267250204352607
+          ],
+          [
+            1.3764068251754014,
+            1.2046777632439054,
+            0.19999999999999996,
+            1.218915411580693
+          ],
+          [
+            1.2203833661485308,
+            0.19999999999999996,
+            1.7554647742485567,
+            0.8241518596029125
+          ],
+          [
+            1.0267250204352607,
+            1.218915411580693,
+            0.8241518596029125,
+            0.930207708381134
+          ]
+        ],
+        "original_quadratic_radius": 0.42025926169452876,
+        "repaired_quadratic_radius": 0.054139772380325246,
+        "beta": 4.860334015721929,
+        "eta": [
+          0.1942816749782096,
+          0.25021189426976603
+        ],
+        "largest_moment_residual": 2.5354438295550348e-17,
+        "destination_marginal_residual": 8.289064421830583e-18,
+        "source_marginal_residual": 2.3351004289906552e-17,
+        "symmetry_residual": 1.3183898417423734e-16,
+        "sampled_kernel_minimum": 0.8883498620721577,
+        "analytical_kernel_lower_bound": 0.0341277475760675,
+        "repair_L2_displacement": 0.38104374638970057,
+        "repair_L2_displacement_bound": 1.1779080138161144
+      },
+      {
+        "reversible": true,
+        "example_index": 6,
+        "original_four_cell_kernel": [
+          [
+            1.04457720735303,
+            1.1054812792211197,
+            1.2449221907703625,
+            0.6050193226554879
+          ],
+          [
+            1.1054812792211197,
+            0.9640855088621898,
+            1.1842418577090201,
+            0.7461913542076704
+          ],
+          [
+            1.2449221907703625,
+            1.1842418577090201,
+            0.19999999999999996,
+            1.3708359515206174
+          ],
+          [
+            0.6050193226554879,
+            0.7461913542076704,
+            1.3708359515206174,
+            1.2779533716162244
+          ]
+        ],
+        "original_quadratic_radius": 0.320794645463724,
+        "repaired_quadratic_radius": 0.027251463569392453,
+        "beta": 5.820052914886924,
+        "eta": [
+          0.2861615042530338,
+          0.25816444947405354
+        ],
+        "largest_moment_residual": 2.116811914872713e-17,
+        "destination_marginal_residual": 6.6712314925748695e-18,
+        "source_marginal_residual": 1.5975041385216104e-17,
+        "symmetry_residual": 7.632783294297951e-17,
+        "sampled_kernel_minimum": 0.9300866245113446,
+        "analytical_kernel_lower_bound": 0.029325285668009505,
+        "repair_L2_displacement": 0.30581387756897954,
+        "repair_L2_displacement_bound": 1.127131244028719
+      },
+      {
+        "reversible": true,
+        "example_index": 7,
+        "original_four_cell_kernel": [
+          [
+            1.5526091008964602,
+            0.6570317282601931,
+            0.49397144640092405,
+            1.2963877244424227
+          ],
+          [
+            0.6570317282601931,
+            0.8601357985312843,
+            1.2201232024819826,
+            1.26270927072654
+          ],
+          [
+            0.49397144640092405,
+            1.2201232024819826,
+            1.0450023462860558,
+            1.2409030048310374
+          ],
+          [
+            1.2963877244424227,
+            1.26270927072654,
+            1.2409030048310374,
+            0.19999999999999996
+          ]
+        ],
+        "original_quadratic_radius": 0.3742533351253868,
+        "repaired_quadratic_radius": 0.011881670943238177,
+        "beta": 7.685114418424781,
+        "eta": [
+          0.35842295569010457,
+          0.35595274015111106
+        ],
+        "largest_moment_residual": 1.888031159943813e-17,
+        "destination_marginal_residual": 4.729831977468013e-18,
+        "source_marginal_residual": 1.713039432527097e-17,
+        "symmetry_residual": 1.0234868508263162e-16,
+        "sampled_kernel_minimum": 0.9575595974242578,
+        "analytical_kernel_lower_bound": 0.023027906181145502,
+        "repair_L2_displacement": 0.37115294213781236,
+        "repair_L2_displacement_bound": 1.2160224507734179
+      }
+    ]
+  }
+}

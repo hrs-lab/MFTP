@@ -1,0 +1,279 @@
+{
+  "purpose": "Floating-point consistency checks for Appendix A; no interval certification or global optimization.",
+  "software": {
+    "python": "3.13.3",
+    "numpy": "2.4.1"
+  },
+  "parameters": {
+    "D": 0.3,
+    "nu": 0.7,
+    "target": 0.5,
+    "initial_state": 0.0,
+    "moment_orders": [
+      8,
+      32,
+      128,
+      512
+    ],
+    "gauss_nodes_per_half_interval": 1600,
+    "gauss_node_newton_refinements": 4,
+    "positivity_grid_intervals": 65536,
+    "finite_difference_intervals": [
+      512,
+      1024,
+      2048,
+      4096
+    ]
+  },
+  "baseline": {
+    "T_at_zero": 0.3634905143250008,
+    "integral_G": 0.36349051432500074,
+    "integral_G_vs_T0_absolute_error": 5.551115123125783e-17,
+    "gamma": 0.47198690497475065,
+    "J_T": 1.5239630209301815,
+    "J_G": 2.9092610666208323,
+    "C_free": 0.05798582777342104,
+    "C_reversible": 0.041161770754067704,
+    "Rv_at_zero_vs_gamma_absolute_error": 2.220446049250313e-16
+  },
+  "table_A": [
+    {
+      "m": 8,
+      "F_m": 0.7788378887181918,
+      "V_m": 0.5995702204305822,
+      "alpha_m_radians": 0.11419385194929839,
+      "S_m": 0.001995877818607423,
+      "S_m_reversible": 4.820189836783099e-05
+    },
+    {
+      "m": 32,
+      "F_m": 0.9339712621412917,
+      "V_m": 0.8717770752115587,
+      "alpha_m_radians": 0.026013378821509937,
+      "S_m": 0.00029917851845788127,
+      "S_m_reversible": 1.0950893590853826e-06
+    },
+    {
+      "m": 128,
+      "F_m": 0.9826994521695709,
+      "V_m": 0.9656635349453394,
+      "alpha_m_radians": 0.006352229932341205,
+      "S_m": 3.9348449211838134e-05,
+      "S_m_reversible": 1.8953524137011867e-08
+    },
+    {
+      "m": 512,
+      "F_m": 0.9956229779781407,
+      "V_m": 0.9912629154257305,
+      "alpha_m_radians": 0.0015787702058584865,
+      "S_m": 4.9832403102265854e-06,
+      "S_m_reversible": 3.0399960936429144e-10
+    }
+  ],
+  "projection_and_tensor_checks": [
+    {
+      "m": 8,
+      "normalized_residual_polynomial_orthogonality_max": 1.6447657817696745e-14,
+      "free_daughter_polynomial_moment_L2_max": 7.994725131340922e-15,
+      "free_normalization_L2": 1.5158272925167198e-15,
+      "free_stationarity_L2": 3.8557786791963006e-17,
+      "reversible_polynomial_moment_L2_max": 1.2243465499817233e-14,
+      "reversible_normalization_and_stationarity_L2": 3.3325624728571558e-15,
+      "free_tensor_budget": 0.9999999999999999,
+      "reversible_tensor_budget": 1.0,
+      "free_unprojected_gradient_relative_error": 2.4091839634365897e-14,
+      "reversible_unprojected_gradient_relative_error": 1.609823385706477e-13
+    },
+    {
+      "m": 32,
+      "normalized_residual_polynomial_orthogonality_max": 2.4102586576642423e-13,
+      "free_daughter_polynomial_moment_L2_max": 1.1545610320118184e-13,
+      "free_normalization_L2": 9.957021372773016e-15,
+      "free_stationarity_L2": 3.8557786791963006e-17,
+      "reversible_polynomial_moment_L2_max": 1.7768804745372407e-13,
+      "reversible_normalization_and_stationarity_L2": 2.2386097499583938e-14,
+      "free_tensor_budget": 0.9999999999999999,
+      "reversible_tensor_budget": 0.9999999999999999,
+      "free_unprojected_gradient_relative_error": 7.286393710614902e-13,
+      "reversible_unprojected_gradient_relative_error": 7.488454301096681e-12
+    },
+    {
+      "m": 128,
+      "normalized_residual_polynomial_orthogonality_max": 3.3977134934791778e-12,
+      "free_daughter_polynomial_moment_L2_max": 1.698487420045795e-12,
+      "free_normalization_L2": 8.412803060523637e-14,
+      "free_stationarity_L2": 3.8557786791963006e-17,
+      "reversible_polynomial_moment_L2_max": 2.5481147378029683e-12,
+      "reversible_normalization_and_stationarity_L2": 1.777074933807033e-13,
+      "free_tensor_budget": 0.9999999999999999,
+      "reversible_tensor_budget": 1.0,
+      "free_unprojected_gradient_relative_error": 6.909717242820079e-11,
+      "reversible_unprojected_gradient_relative_error": 3.9789282979540985e-10
+    },
+    {
+      "m": 512,
+      "normalized_residual_polynomial_orthogonality_max": 1.1165177522766065e-10,
+      "free_daughter_polynomial_moment_L2_max": 5.471665671550815e-11,
+      "free_normalization_L2": 1.1914589798166055e-12,
+      "free_stationarity_L2": 3.8557786791963006e-17,
+      "reversible_polynomial_moment_L2_max": 8.318424492415952e-11,
+      "reversible_normalization_and_stationarity_L2": 1.2225121546177423e-12,
+      "free_tensor_budget": 0.9999999999999999,
+      "reversible_tensor_budget": 0.9999999999999999,
+      "free_unprojected_gradient_relative_error": 1.4105695389510231e-08,
+      "reversible_unprojected_gradient_relative_error": 3.605852616495042e-08
+    }
+  ],
+  "rank_one_paths": [
+    {
+      "m": 8,
+      "amplitude": 0.02469694979818113,
+      "theta": 0.0031086766025031254,
+      "u_derivative_bound": 1441.1248345422978,
+      "sampled_u_sup": 4.234144282989186,
+      "u_sup_upper_bound": 4.245139192920692,
+      "v_sup_upper_bound": 2.3845407847709237,
+      "positivity_lower_bound_both_signs": 0.75,
+      "resolvent_smallness_upper_bound": 0.04939389959636226,
+      "full_vs_scalar_formula_max_absolute_error": 0.0,
+      "diameter_formula_cancellation_check_absolute_error": 1.5585406229479126e-17,
+      "finite_difference": [
+        {
+          "sign": -1,
+          "intervals": 512,
+          "maximum_passage_time_error": 1.3621930045060182e-07,
+          "maximum_displacement_error": 4.663190265761309e-08,
+          "displacement_observed_order": null
+        },
+        {
+          "sign": -1,
+          "intervals": 1024,
+          "maximum_passage_time_error": 3.4077014599009914e-08,
+          "maximum_displacement_error": 1.1658097305834128e-08,
+          "displacement_observed_order": 1.999984946737018
+        },
+        {
+          "sign": -1,
+          "intervals": 2048,
+          "maximum_passage_time_error": 8.430866726971686e-09,
+          "maximum_displacement_error": 2.914552917322136e-09,
+          "displacement_observed_order": 1.9999858475379853
+        },
+        {
+          "sign": -1,
+          "intervals": 4096,
+          "maximum_passage_time_error": 2.4609921878138152e-09,
+          "maximum_displacement_error": 7.28556200347522e-10,
+          "displacement_observed_order": 2.000162425555184
+        },
+        {
+          "sign": 1,
+          "intervals": 512,
+          "maximum_passage_time_error": 4.296792727176424e-08,
+          "maximum_displacement_error": 4.665121272565012e-08,
+          "displacement_observed_order": null
+        },
+        {
+          "sign": 1,
+          "intervals": 1024,
+          "maximum_passage_time_error": 1.0763664515245353e-08,
+          "maximum_displacement_error": 1.1662922738158083e-08,
+          "displacement_observed_order": 1.9999852108419254
+        },
+        {
+          "sign": 1,
+          "intervals": 2048,
+          "maximum_passage_time_error": 2.6036775513382793e-09,
+          "maximum_displacement_error": 2.915759078096964e-09,
+          "displacement_observed_order": 1.999985951018973
+        },
+        {
+          "sign": 1,
+          "intervals": 4096,
+          "maximum_passage_time_error": 1.0035871023106324e-09,
+          "maximum_displacement_error": 7.288578069130367e-10,
+          "displacement_observed_order": 2.0001622269850885
+        }
+      ]
+    },
+    {
+      "m": 32,
+      "amplitude": 0.012526458403171906,
+      "theta": 0.0004659235304427426,
+      "u_derivative_bound": 48867.98987221748,
+      "sampled_u_sup": 7.9968101961272025,
+      "u_sup_upper_bound": 8.36964337081148,
+      "v_sup_upper_bound": 2.3845407847709237,
+      "positivity_lower_bound_both_signs": 0.75,
+      "resolvent_smallness_upper_bound": 0.025052916806343813,
+      "full_vs_scalar_formula_max_absolute_error": 0.0,
+      "diameter_formula_cancellation_check_absolute_error": 4.12843858491746e-18,
+      "finite_difference": [
+        {
+          "sign": -1,
+          "intervals": 512,
+          "maximum_passage_time_error": 3.3381666542098287e-07,
+          "maximum_displacement_error": 2.442292676608908e-07,
+          "displacement_observed_order": null
+        },
+        {
+          "sign": -1,
+          "intervals": 1024,
+          "maximum_passage_time_error": 8.3624018598627e-08,
+          "maximum_displacement_error": 6.120510133834786e-08,
+          "displacement_observed_order": 1.9965122895286025
+        },
+        {
+          "sign": -1,
+          "intervals": 2048,
+          "maximum_passage_time_error": 2.0826838975640527e-08,
+          "maximum_displacement_error": 1.531052519888762e-08,
+          "displacement_observed_order": 1.999128131404946
+        },
+        {
+          "sign": -1,
+          "intervals": 4096,
+          "maximum_passage_time_error": 5.56063917134253e-09,
+          "maximum_displacement_error": 3.8282032167728784e-09,
+          "displacement_observed_order": 1.9997844514812861
+        },
+        {
+          "sign": 1,
+          "intervals": 512,
+          "maximum_passage_time_error": 1.5465004682413408e-07,
+          "maximum_displacement_error": 2.442374445801011e-07,
+          "displacement_observed_order": null
+        },
+        {
+          "sign": 1,
+          "intervals": 1024,
+          "maximum_passage_time_error": 3.8788172063153326e-08,
+          "maximum_displacement_error": 6.120708931930742e-08,
+          "displacement_observed_order": 1.9965137319789845
+        },
+        {
+          "sign": 1,
+          "intervals": 2048,
+          "maximum_passage_time_error": 9.794704824983569e-09,
+          "maximum_displacement_error": 1.5311018597611427e-08,
+          "displacement_observed_order": 1.9991284985993731
+        },
+        {
+          "sign": 1,
+          "intervals": 4096,
+          "maximum_passage_time_error": 2.095890461184524e-09,
+          "maximum_displacement_error": 3.828326411629125e-09,
+          "displacement_observed_order": 1.9997845167721287
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "largest_normalized_polynomial_orthogonality_residual": 1.1165177522766065e-10,
+    "largest_unprojected_gradient_relative_error": 3.605852616495042e-08,
+    "largest_tensor_budget_error": 1.1102230246251565e-16,
+    "largest_finest_grid_passage_time_error": 5.56063917134253e-09,
+    "minimum_finest_grid_displacement_order": 1.9997844514812861,
+    "minimum_positivity_lower_bound": 0.75
+  }
+}
